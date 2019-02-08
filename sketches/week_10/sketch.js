@@ -2,14 +2,10 @@ var camera, tick = 0,
 	scene, renderer, clock = new THREE.Clock(),
 	controls, container,
 	options, spawnerOptions, particleSystem;
-// var gui = new dat.GUI({ width: 350 });
+var gui = new dat.GUI({ width: 350 });
 var max = 0;
 
 var startTime, currentTime;
-
-function initializsetime() {
-	startTime = new Date();
-}
 
 function startClicked() {
 	// hide button and show loader
@@ -128,20 +124,20 @@ function init() {
 		timeScale: 1
 	};
 	//
-	// gui.add(options, "velocityRandomness", 0, 3);
-	// gui.add(options, "positionRandomness", 0, 3);
-	// gui.add(options, "size", 1, 20);
-	// gui.add(options, "sizeRandomness", 0, 25);
-	// gui.add(options, "colorRandomness", 0, 1);
-	// gui.add(options, "lifetime", .1, 10);
-	// gui.add(options, "turbulence", 0, 1);
+	gui.add(options, "velocityRandomness", 0, 3);
+	gui.add(options, "positionRandomness", 0, 3);
+	gui.add(options, "size", 1, 20);
+	gui.add(options, "sizeRandomness", 0, 25);
+	gui.add(options, "colorRandomness", 0, 1);
+	gui.add(options, "lifetime", .1, 10);
+	gui.add(options, "turbulence", 0, 1);
 
-	// gui.add(spawnerOptions, "spawnRate", 10, 30000);
-	// gui.add(spawnerOptions, "timeScale", - 1, 1);
-	// gui.add(spawnerOptions, "horizontalSpeed", 0, 10);
-	// gui.add(spawnerOptions, "verticalSpeed", 0, 10);
+	gui.add(spawnerOptions, "spawnRate", 10, 30000);
+	gui.add(spawnerOptions, "timeScale", - 1, 1);
+	gui.add(spawnerOptions, "horizontalSpeed", 0, 10);
+	gui.add(spawnerOptions, "verticalSpeed", 0, 10);
 
-	// gui.add(camera.position, "z", -1000, 1000);
+	gui.add(camera.position, "z", -1000, 1000);
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setPixelRatio(window.devicePixelRatio);

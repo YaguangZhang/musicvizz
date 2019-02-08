@@ -94,7 +94,6 @@ function init() {
 	geometry.addAttribute('scale', new THREE.BufferAttribute(scales, 1));
 	var material = new THREE.ShaderMaterial({
 		uniforms: {
-			// color: { value: new THREE.Color(0xD39CA1) },
 			color: { value: new THREE.Color(0xffffff) },
 		},
 		vertexShader: document.getElementById('vertexshader').textContent,
@@ -107,10 +106,6 @@ function init() {
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	// document.addEventListener('mousemove', onDocumentMouseMove, false);
-	// document.addEventListener('touchstart', onDocumentTouchStart, false);
-	// document.addEventListener('touchmove', onDocumentTouchMove, false);
-	// window.addEventListener('resize', onWindowResize, false);
 
 	// show visualization and hide loader
 	document.getElementById("webgl").appendChild(renderer.domElement);
@@ -127,26 +122,6 @@ document.getElementById("unmute").onclick = function () {
 	toggleUnmuteControl();
 	audioClient.toggleSound();
 }
-
-
-// function onDocumentMouseMove(event) {
-// 	mouseX = event.clientX - windowHalfX;
-// 	mouseY = event.clientY - windowHalfY;
-// }
-// function onDocumentTouchStart(event) {
-// 	if (event.touches.length === 1) {
-// 		event.preventDefault();
-// 		mouseX = event.touches[0].pageX - windowHalfX;
-// 		mouseY = event.touches[0].pageY - windowHalfY;
-// 	}
-// }
-// function onDocumentTouchMove(event) {
-// 	if (event.touches.length === 1) {
-// 		event.preventDefault();
-// 		mouseX = event.touches[0].pageX - windowHalfX;
-// 		mouseY = event.touches[0].pageY - windowHalfY;
-// 	}
-// }
 
 function onWindowResize() {
 	windowHalfX = window.innerWidth / 2;

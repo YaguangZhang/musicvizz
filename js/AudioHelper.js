@@ -83,11 +83,6 @@ AudioHelper.prototype.getFrequencyData = function() {
 AudioHelper.prototype.getFrequencyDataFloat = function() {
 	var binn = new Float32Array(this.analyser.frequencyBinCount);
 	this.analyser.getFloatFrequencyData(binn);
-	// boost = 0;
-	// for (var i = 0; i < binCount.length; i++) {
-	// 	boost += binCount[i];
-	// }
-	// boost /= binCount.length;
 	return binn;
 }
 
@@ -106,4 +101,53 @@ AudioHelper.prototype.toggleSound = function() {
 		this.gainNode.gain.value = 1;
 	}
 	this.isMuted = !this.isMuted;
+}
+
+AudioHelper.prototype.getCentroid = function() {
+	var freqPerBin = this.audioContext.sampleRate / this.analyser.fftSize;
+	var sum = 0, total = 0;
+	var binCount = new Uint8Array(this.analyser.frequencyBinCount);
+	for(var i = 0; i < binCount.length; i++) {
+		sum += freqPerBin*(i+1)*binCount[i];
+		total += binCount[i];
+	}
+	return sum/total;
+}
+
+AudioHelper.prototype.getBass = function() {
+	var freqPerBin = this.audioContext.sampleRate / this.analyser.fftSize;
+	var length = 350 / freqPerBin;
+	var values = 0;
+	var average;
+	var binCount = new Uint8Array(this.analyser.frequencyBinCount);
+	for(var i = 0; i < length; i++) {
+		values += binCount[i];
+	}
+	average = values / length;
+	return average;
+}
+
+AudioHelper.prototype.getTreble = function() {
+	var freqPerBin = this.audioContext.sampleRate / this.analyser.fftSize;
+	var start = Math.floor(3000 / freqPerBin);
+    var values = 0;
+	var average;
+	var binCount = new Uint8Array(this.analyser.frequencyBinCount);
+    for(var i = start; i < binCount.length; i++){
+		values += binCount[i];
+	}
+	average = values / (binCount.length - start);
+	return average;
+}
+
+AudioHelper.prototype.getAmplitude = function() {
+	var values = 0;
+	var average;
+	var binCount = new Uint8Array(this.analyser.frequencyBinCount);
+	var length = binCount.length;
+	for(var i = 0; i < length; i++){
+		values += binCount[i];
+	}
+    average = values / length;
+    return average;
 }

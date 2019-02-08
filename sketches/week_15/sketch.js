@@ -7,6 +7,7 @@ var amplitude;
 var level;
 var gain;
 
+
 function preload() {
 	song = loadSound("../../audio/arctic.mp3");
 }
