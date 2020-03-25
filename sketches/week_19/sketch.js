@@ -64,7 +64,7 @@ world.loop().hook(function (delta, now) {
 function beginAudioProcessing() {
   audioClient = new AudioHelper();
   audioClient.setupAudioProcessing();
-  audioClient.loadFile("../../audio/yeb.mp3")
+  audioClient.loadFile("../../audio/sweeter.mp3")
     .then(init)
     .then(() => {
       audioClient.onAudioProcess(function () {
