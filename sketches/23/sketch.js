@@ -7,6 +7,8 @@ var width = window.innerWidth,
 var system, emitter, color1, color2;
 var time;
 var startButton = document.getElementById('start-animate');
+var gui;
+
 startButton.addEventListener('click', startClicked, { passive: false });
 
 function startClicked() {
@@ -48,7 +50,7 @@ function init() {
     addLights();
     addProton();
     animate();
-    // showControls();
+    showControls();
 }
 
 function addLights() {
