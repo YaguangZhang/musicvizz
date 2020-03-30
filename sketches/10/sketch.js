@@ -9,7 +9,6 @@ var startTime, currentTime;
 
 function startClicked() {
 	// hide button and show loader
-	// TODO: animate button into loader animateStart()
 	document.getElementsByClassName("button-container")[0].style.visibility = "hidden";
 	document.getElementsByClassName("loader-container")[0].style.visibility = "visible";
 	beginAudioProcessing();
@@ -124,20 +123,20 @@ function init() {
 		timeScale: 1
 	};
 	//
-	gui.add(options, "velocityRandomness", 0, 3);
-	gui.add(options, "positionRandomness", 0, 3);
-	gui.add(options, "size", 1, 20);
-	gui.add(options, "sizeRandomness", 0, 25);
-	gui.add(options, "colorRandomness", 0, 1);
-	gui.add(options, "lifetime", .1, 10);
-	gui.add(options, "turbulence", 0, 1);
+	// gui.add(options, "velocityRandomness", 0, 3);
+	// gui.add(options, "positionRandomness", 0, 3);
+	// gui.add(options, "size", 1, 20);
+	// gui.add(options, "sizeRandomness", 0, 25);
+	// gui.add(options, "colorRandomness", 0, 1);
+	// gui.add(options, "lifetime", .1, 10);
+	// gui.add(options, "turbulence", 0, 1);
 
-	gui.add(spawnerOptions, "spawnRate", 10, 30000);
-	gui.add(spawnerOptions, "timeScale", - 1, 1);
-	gui.add(spawnerOptions, "horizontalSpeed", 0, 10);
-	gui.add(spawnerOptions, "verticalSpeed", 0, 10);
+	// gui.add(spawnerOptions, "spawnRate", 10, 30000);
+	// gui.add(spawnerOptions, "timeScale", - 1, 1);
+	// gui.add(spawnerOptions, "horizontalSpeed", 0, 10);
+	// gui.add(spawnerOptions, "verticalSpeed", 0, 10);
 
-	gui.add(camera.position, "z", -1000, 1000);
+	// gui.add(camera.position, "z", -1000, 1000);
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setPixelRatio(window.devicePixelRatio);
